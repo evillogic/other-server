@@ -55,7 +55,7 @@ namespace WindowsFormsApplication2
 
             Thread ctThread = new Thread(getMessage);
             ctThread.Start();
-
+            button2.Enabled = false;
         }
 
 
