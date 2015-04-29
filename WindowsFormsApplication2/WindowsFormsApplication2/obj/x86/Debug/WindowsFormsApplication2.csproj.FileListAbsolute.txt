@@ -5,3 +5,4 @@ C:\Users\KyeranABishop\Desktop\other server\WindowsFormsApplication2\WindowsForm
 C:\Users\KyeranABishop\Desktop\other server\WindowsFormsApplication2\WindowsFormsApplication2\obj\x86\Debug\WindowsFormsApplication2.exe
 C:\Users\KyeranABishop\Desktop\other server\WindowsFormsApplication2\WindowsFormsApplication2\obj\x86\Debug\WindowsFormsApplication2.pdb
 C:\Users\KyeranABishop\Desktop\other server\WindowsFormsApplication2\WindowsFormsApplication2\obj\x86\Debug\WindowsFormsApplication2.csproj.GenerateResource.Cache
+C:\Users\KyeranABishop\Desktop\other server\WindowsFormsApplication2\WindowsFormsApplication2\obj\x86\Debug\WindowsFormsApplication2.csprojResolveAssemblyReference.cache

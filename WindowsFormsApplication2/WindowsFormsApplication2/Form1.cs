@@ -1,11 +1,7 @@
 ﻿using System;
-
 using System.Windows.Forms;
-
 using System.Text;
-
 using System.Net.Sockets;
-
 using System.Threading;
 
 
@@ -15,7 +11,8 @@ namespace WindowsFormsApplication2
 
     public partial class Form1 : Form
     {
-
+        public delegate void newDelegate();
+        public newDelegate myDelegate;
         System.Net.Sockets.TcpClient clientSocket = new System.Net.Sockets.TcpClient();
         NetworkStream serverStream = default(NetworkStream);
         string readData = null;
@@ -53,12 +50,11 @@ namespace WindowsFormsApplication2
 
             button2.Enabled = false;
 
+            myDelegate = new newDelegate(disconnect);
             Thread ctThread = new Thread(getMessage);
             ctThread.Start();
             button2.Enabled = false;
         }
-
-
 
         private void getMessage()
         {
@@ -68,21 +64,30 @@ namespace WindowsFormsApplication2
                 int buffSize = 0;
                 byte[] inStream = new byte[10025];
                 buffSize = clientSocket.ReceiveBufferSize;
-                serverStream.Read(inStream, 0, buffSize);
-                string returndata = System.Text.Encoding.ASCII.GetString(inStream);
-                readData = "" + returndata;
-                msg();
+                try{
+                    serverStream.Read(inStream, 0, buffSize);
+                    string returndata = System.Text.Encoding.ASCII.GetString(inStream);
+                    readData = "" + returndata;
+                    msg();
+                }catch{
+                    Invoke(myDelegate);
+                    return;
+                }
             }
         }
 
-
+        private void disconnect()
+        {
+            button2.Enabled = true;
+        }
 
         private void msg()
         {
             if (this.InvokeRequired)
                 this.Invoke(new MethodInvoker(msg));
             else
-                textBox1.Text = textBox1.Text + Environment.NewLine + " >> " + readData;
+                textBox1.AppendText(Environment.NewLine + " >> " + readData);
+                //textBox1.Text = textBox1.Text + Environment.NewLine + " >> " + readData;
         }
 
         private void textBox2_KeyDown(object sender, KeyEventArgs e)
