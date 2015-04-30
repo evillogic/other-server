@@ -23,7 +23,7 @@ namespace ConsoleApplication1
             {
                 counter += 1;
                 clientSocket = serverSocket.AcceptTcpClient();
-                byte[] bytesFrom = new byte[10025];
+                byte[] bytesFrom = new byte[clientSocket.ReceiveBufferSize];
                 string dataFromClient = null;
                 NetworkStream networkStream = clientSocket.GetStream();
                 networkStream.Read(bytesFrom, 0, (int)clientSocket.ReceiveBufferSize);
@@ -90,7 +90,7 @@ namespace ConsoleApplication1
         private void doChat()
         {
             int requestCount = 0;
-            byte[] bytesFrom = new byte[10025];
+            byte[] bytesFrom = new byte[clientSocket.ReceiveBufferSize];
             string dataFromClient = null;
             Byte[] sendBytes = null;
             string serverResponse = null;

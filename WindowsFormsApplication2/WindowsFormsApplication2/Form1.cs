@@ -62,7 +62,7 @@ namespace WindowsFormsApplication2
             {
                 serverStream = clientSocket.GetStream();
                 int buffSize = 0;
-                byte[] inStream = new byte[10025];
+                byte[] inStream = new byte[clientSocket.ReceiveBufferSize];
                 buffSize = clientSocket.ReceiveBufferSize;
                 try{
                     serverStream.Read(inStream, 0, buffSize);
