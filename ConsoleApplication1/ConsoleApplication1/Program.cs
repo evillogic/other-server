@@ -56,7 +56,19 @@ namespace ConsoleApplication1
             {
                 TcpClient broadcastSocket;
                 broadcastSocket = (TcpClient)Item.Value;
-                NetworkStream broadcastStream = broadcastSocket.GetStream();
+                NetworkStream broadcastStream;
+                try
+                {
+                    broadcastStream = broadcastSocket.GetStream();
+
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.ToString());
+                    clientsList.Remove(uName);
+                    broadcastSocket.Close();
+                    return;
+                }
                 Byte[] broadcastBytes = null;
 
                 if (flag == true)
@@ -107,6 +119,7 @@ namespace ConsoleApplication1
                 try
                 {
                     requestCount = requestCount + 1;
+                    //
                     NetworkStream networkStream = clientSocket.GetStream();
                     networkStream.Read(bytesFrom, 0, (int)clientSocket.ReceiveBufferSize);
                     dataFromClient = System.Text.Encoding.ASCII.GetString(bytesFrom);
@@ -119,7 +132,7 @@ namespace ConsoleApplication1
                     {
                         String action = "";
                         for (int i = 1; i < splitString.Length; i++)
-                            action += i;
+                            action += splitString[i] + " ";
                         Program.broadcast(clNo + " " + action, clNo, false);
                     }
                     else
