@@ -48,10 +48,9 @@ namespace WindowsFormsApplication2
             serverStream.Write(outStream, 0, outStream.Length);
             serverStream.Flush();
 
-            button2.Enabled = false;
-
             myDelegate = new newDelegate(disconnect);
             Thread ctThread = new Thread(getMessage);
+            ctThread.IsBackground = true;
             ctThread.Start();
             button2.Enabled = false;
         }

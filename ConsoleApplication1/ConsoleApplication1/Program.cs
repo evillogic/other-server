@@ -29,12 +29,18 @@ namespace ConsoleApplication1
                 networkStream.Read(bytesFrom, 0, (int)clientSocket.ReceiveBufferSize);
                 dataFromClient = System.Text.Encoding.ASCII.GetString(bytesFrom);
                 dataFromClient = dataFromClient.Substring(0, dataFromClient.IndexOf("$"));
-                clientsList.Add(dataFromClient, clientSocket);
-                broadcast(dataFromClient + " Joined ", dataFromClient, false);
-                Console.WriteLine(dataFromClient + " Joined chat room ");
-                handleClinet client = new handleClinet();
-                client.startClient(clientSocket, dataFromClient, clientsList);
-
+                if (clientsList.Contains(dataFromClient))
+                {
+                    Console.WriteLine(dataFromClient + " Tried to join chat room, but " + dataFromClient + " is already in use");
+                    broadcast("A doppleganger of " + dataFromClient + " has attempted to join!", dataFromClient, false);
+                }
+                else {
+                    clientsList.Add(dataFromClient, clientSocket);
+                    broadcast(dataFromClient + " Joined ", dataFromClient, false);
+                    Console.WriteLine(dataFromClient + " Joined chat room ");
+                    handleClinet client = new handleClinet();
+                    client.startClient(clientSocket, dataFromClient, clientsList);
+                }
             }
 
             clientSocket.Close();
@@ -59,9 +65,7 @@ namespace ConsoleApplication1
                 }
                 else
                 {
-
                     broadcastBytes = Encoding.ASCII.GetBytes(msg);
-
                 }
 
                 broadcastStream.Write(broadcastBytes, 0, broadcastBytes.Length);
@@ -82,6 +86,7 @@ namespace ConsoleApplication1
             this.clNo = clineNo;
             this.clientsList = cList;
             Thread ctThread = new Thread(doChat);
+            ctThread.IsBackground = true;
             ctThread.Start();
         }
 
@@ -97,7 +102,7 @@ namespace ConsoleApplication1
             string rCount = null;
             requestCount = 0;
 
-            while ((true))
+            while (true)
             {
                 try
                 {
@@ -109,7 +114,18 @@ namespace ConsoleApplication1
                     Console.WriteLine("From client - " + clNo + " : " + dataFromClient);
                     rCount = Convert.ToString(requestCount);
 
-                    Program.broadcast(dataFromClient, clNo, true);
+                    string[] splitString = dataFromClient.Split();
+                    if (splitString[0] == "/me")
+                    {
+                        String action = "";
+                        for (int i = 1; i < splitString.Length; i++)
+                            action += i;
+                        Program.broadcast(clNo + " " + action, clNo, false);
+                    }
+                    else
+                    {
+                        Program.broadcast(dataFromClient, clNo, true);
+                    }
                 }
                 catch (Exception ex)
                 {
