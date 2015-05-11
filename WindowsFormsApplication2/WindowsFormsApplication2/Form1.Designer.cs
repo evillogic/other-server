@@ -65,6 +65,7 @@
             this.txtName.Name = "txtName";
             this.txtName.Size = new System.Drawing.Size(100, 20);
             this.txtName.TabIndex = 0;
+            this.txtName.Text = "Kaz";
             // 
             // button1
             // 
@@ -128,6 +129,7 @@
             this.txtIP.Name = "txtIP";
             this.txtIP.Size = new System.Drawing.Size(100, 20);
             this.txtIP.TabIndex = 1;
+            this.txtIP.Text = "127.0.0.1";
             // 
             // txtPort
             // 
@@ -135,6 +137,7 @@
             this.txtPort.Name = "txtPort";
             this.txtPort.Size = new System.Drawing.Size(100, 20);
             this.txtPort.TabIndex = 2;
+            this.txtPort.Text = "8888";
             // 
             // Form1
             // 

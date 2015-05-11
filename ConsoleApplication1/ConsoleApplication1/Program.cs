@@ -143,6 +143,8 @@ namespace ConsoleApplication1
                 catch (Exception ex)
                 {
                     Console.WriteLine(ex.ToString());
+                    //Theyve probably disconnected
+                    //clientsList.Remove(dataFromClient);
                 }
             }//end while
         }//end doChat
