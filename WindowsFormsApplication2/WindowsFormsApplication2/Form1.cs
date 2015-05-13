@@ -39,7 +39,7 @@ namespace WindowsFormsApplication2
 
         private void button2_Click(object sender, EventArgs e)
         {
-            readData = "Connected to Chat Server ...";
+            readData = "Connecting to Chat Server ...";
             msg();
             clientSocket.Connect(txtIP.Text, int.Parse(txtPort.Text));
             serverStream = clientSocket.GetStream();
