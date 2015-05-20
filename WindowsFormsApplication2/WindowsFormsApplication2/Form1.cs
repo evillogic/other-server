@@ -97,6 +97,11 @@ namespace WindowsFormsApplication2
             }
         }
 
+        private void cmdHost_Click(object sender, EventArgs e)
+        {
+            Server serv = new Server(txtLog);
+        }
+
 
 
     }

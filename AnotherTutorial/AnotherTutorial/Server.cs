@@ -6,18 +6,21 @@ using System.Net.Sockets;
 using System.Threading;
 using System.Net;
 
-namespace AnotherTutorial
+namespace WindowsFormsApplication2
 {
     class Server
     {
         private TcpListener tcpListener;
         private Thread listenThread;
+        private System.Windows.Forms.TextBox output;
+        private delegate void ObjectDelegate(object obj);
 
-        public Server()
+        public Server(System.Windows.Forms.TextBox setOut)
         {
             this.tcpListener = new TcpListener(IPAddress.Any, 8888);
             this.listenThread = new Thread(new ThreadStart(ListenForClients));
             this.listenThread.Start();
+            output = setOut;
         }
 
         private void ListenForClients()
@@ -33,6 +36,7 @@ namespace AnotherTutorial
                 //with connected client
                 Thread clientThread = new Thread(new ParameterizedThreadStart(HandleClientComm));
                 clientThread.Start(client);
+                
             }
         }
 
@@ -69,19 +73,25 @@ namespace AnotherTutorial
                 ASCIIEncoding encoder = new ASCIIEncoding();
                 String text = encoder.GetString(message, 0, bytesRead); //Translate it into text
                 text = text.Substring(0, text.IndexOf("$")); //Remove the $
-                System.Diagnostics.Debug.WriteLine(text); //Spit it out in the console
+                outputText(text);
+                //System.Diagnostics.Debug.WriteLine(text); //Spit it out in the console
             }
 
             tcpClient.Close();
         }
 
-        private void sendMessage() {
-            NetworkStream clientStream = tcpClient.GetStream();
-            ASCIIEncoding encoder = new ASCIIEncoding();
-            byte[] buffer = encoder.GetBytes("Hello Client!");
-
-            clientStream.Write(buffer, 0, buffer.Length);
-            clientStream.Flush();
+        private void outputText(String text) 
+        {
+            output.AppendText(Environment.NewLine + " >> " + text);
         }
+
+        //private void sendMessage() {
+        //    NetworkStream clientStream = tcpClient.GetStream();
+        //    ASCIIEncoding encoder = new ASCIIEncoding();
+        //    byte[] buffer = encoder.GetBytes("Hello Client!");
+
+        //    clientStream.Write(buffer, 0, buffer.Length);
+        //    clientStream.Flush();
+        //}
     }
 }

@@ -5,3 +5,11 @@ P:\Visual Studio 2010\Projects\AnotherTutorial\AnotherTutorial\obj\x86\Debug\Ano
 P:\Visual Studio 2010\Projects\AnotherTutorial\AnotherTutorial\obj\x86\Debug\AnotherTutorial.csproj.GenerateResource.Cache
 P:\Visual Studio 2010\Projects\AnotherTutorial\AnotherTutorial\obj\x86\Debug\AnotherTutorial.exe
 P:\Visual Studio 2010\Projects\AnotherTutorial\AnotherTutorial\obj\x86\Debug\AnotherTutorial.pdb
+C:\Users\KyeranABishop\Desktop\other server\AnotherTutorial\AnotherTutorial\obj\x86\Debug\AnotherTutorial.exe
+C:\Users\KyeranABishop\Desktop\other server\AnotherTutorial\AnotherTutorial\obj\x86\Debug\AnotherTutorial.pdb
+C:\Users\KyeranABishop\Desktop\other server\AnotherTutorial\AnotherTutorial\obj\x86\Debug\AnotherTutorial.csprojResolveAssemblyReference.cache
+C:\Users\KyeranABishop\Desktop\other server\AnotherTutorial\AnotherTutorial\obj\x86\Debug\AnotherTutorial.Form1.resources
+C:\Users\KyeranABishop\Desktop\other server\AnotherTutorial\AnotherTutorial\obj\x86\Debug\AnotherTutorial.Properties.Resources.resources
+C:\Users\KyeranABishop\Desktop\other server\AnotherTutorial\AnotherTutorial\obj\x86\Debug\AnotherTutorial.csproj.GenerateResource.Cache
+C:\Users\KyeranABishop\Desktop\other server\AnotherTutorial\AnotherTutorial\bin\Debug\AnotherTutorial.exe
+C:\Users\KyeranABishop\Desktop\other server\AnotherTutorial\AnotherTutorial\bin\Debug\AnotherTutorial.pdb
