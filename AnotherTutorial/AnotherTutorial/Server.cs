@@ -13,7 +13,8 @@ namespace WindowsFormsApplication2
         private TcpListener tcpListener;
         private Thread listenThread;
         private System.Windows.Forms.TextBox output;
-        private delegate void ObjectDelegate(object obj);
+        private delegate void ObjectDelegate(String text);
+        private ObjectDelegate del;
 
         public Server(System.Windows.Forms.TextBox setOut)
         {
@@ -21,6 +22,7 @@ namespace WindowsFormsApplication2
             this.listenThread = new Thread(new ThreadStart(ListenForClients));
             this.listenThread.Start();
             output = setOut;
+            del = new ObjectDelegate(outputText);
         }
 
         private void ListenForClients()
@@ -73,7 +75,7 @@ namespace WindowsFormsApplication2
                 ASCIIEncoding encoder = new ASCIIEncoding();
                 String text = encoder.GetString(message, 0, bytesRead); //Translate it into text
                 text = text.Substring(0, text.IndexOf("$")); //Remove the $
-                outputText(text);
+                del.Invoke(text); //Used for Cross Threading
                 //System.Diagnostics.Debug.WriteLine(text); //Spit it out in the console
             }
 
