@@ -17,8 +17,6 @@ namespace WindowsFormsApplication2
         NetworkStream serverStream = default(NetworkStream);
         string readData = null;
 
-
-
         public Form1()
         {
             InitializeComponent();
@@ -63,12 +61,15 @@ namespace WindowsFormsApplication2
                 int buffSize = 0;
                 byte[] inStream = new byte[clientSocket.ReceiveBufferSize];
                 buffSize = clientSocket.ReceiveBufferSize;
-                try{
+                try
+                {
                     serverStream.Read(inStream, 0, buffSize);
                     string returndata = System.Text.Encoding.ASCII.GetString(inStream);
                     readData = "" + returndata;
                     msg();
-                }catch{
+                }
+                catch
+                {
                     Invoke(myDelegate);
                     return;
                 }
@@ -86,7 +87,7 @@ namespace WindowsFormsApplication2
                 this.Invoke(new MethodInvoker(msg));
             else
                 textBox1.AppendText(Environment.NewLine + " >> " + readData);
-                //textBox1.Text = textBox1.Text + Environment.NewLine + " >> " + readData;
+            //textBox1.Text = textBox1.Text + Environment.NewLine + " >> " + readData;
         }
 
         private void textBox2_KeyDown(object sender, KeyEventArgs e)
@@ -101,10 +102,6 @@ namespace WindowsFormsApplication2
         {
             Server serv = new Server(txtLog);
         }
-
-
-
     }
 
 }
-
