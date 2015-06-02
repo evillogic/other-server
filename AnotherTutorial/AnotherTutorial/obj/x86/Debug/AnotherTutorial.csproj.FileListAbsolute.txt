@@ -13,3 +13,5 @@ C:\Users\KyeranABishop\Desktop\other server\AnotherTutorial\AnotherTutorial\obj\
 C:\Users\KyeranABishop\Desktop\other server\AnotherTutorial\AnotherTutorial\obj\x86\Debug\AnotherTutorial.csproj.GenerateResource.Cache
 C:\Users\KyeranABishop\Desktop\other server\AnotherTutorial\AnotherTutorial\bin\Debug\AnotherTutorial.exe
 C:\Users\KyeranABishop\Desktop\other server\AnotherTutorial\AnotherTutorial\bin\Debug\AnotherTutorial.pdb
+C:\Users\David\Source\Repos\other-server\AnotherTutorial\AnotherTutorial\obj\x86\Debug\AnotherTutorial.exe
+C:\Users\David\Source\Repos\other-server\AnotherTutorial\AnotherTutorial\obj\x86\Debug\AnotherTutorial.pdb
